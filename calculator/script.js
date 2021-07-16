@@ -4,9 +4,9 @@ function sign(dig) {
   if (dig == "") {
     display.value = "";
   } else {
-    if (dig > 0 ) {
+    if (dig > 0) {
       display.value = "-" + display.value;
-    }else {
+    } else {
       display.value = Math.abs(display.value);
     }
   }
@@ -15,7 +15,7 @@ function cls(dig) {
   display.value = dig;
 }
 function show(dig) {
- display.value += dig;
+  display.value += dig;
 }
 
 function comma(dis) {
@@ -23,24 +23,24 @@ function comma(dis) {
   if (dis == "") {
     display.value += "0.";
   } else {
-    if (dis.indexOf('.') != -1) {
-      document.getElementById('comma').setAttribute = "disabled";
+    if (dis.indexOf(".") != -1) {
+      document.getElementById("comma").setAttribute = "disabled";
     } else {
       display.value += ".";
     }
   }
 }
 function calcul(dig) {
-  var dis = display.value ;
-  if (dis== "") {
-    document.getElementById('equal').setAttribute = "disabled";
+  var dis = display.value;
+  if (dis == "") {
+    document.getElementById("equal").setAttribute = "disabled";
   } else {
-    dig = display.value ;
+    dig = display.value;
     try {
       display.value = eval(dig);
     } catch (e) {
       if (e instanceof SyntaxError) {
-        display.value ="Syntax Error";
+        display.value = "Syntax Error";
       }
     }
   }

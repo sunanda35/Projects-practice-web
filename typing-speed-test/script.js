@@ -1,44 +1,43 @@
-const word = document.getElementById('word');
-const text = document.getElementById('text');
-const scoreEl = document.getElementById('score');
-const timeEl = document.getElementById('time');
-const endgameEl = document.getElementById('end-game-container');
-const settingsBtn = document.getElementById('settings-btn');
-const settings = document.getElementById('settings');
-const settingsForm = document.getElementById('settings-form');
-const difficultySelect = document.getElementById('difficulty');
+const word = document.getElementById("word");
+const text = document.getElementById("text");
+const scoreEl = document.getElementById("score");
+const timeEl = document.getElementById("time");
+const endgameEl = document.getElementById("end-game-container");
+const settingsBtn = document.getElementById("settings-btn");
+const settings = document.getElementById("settings");
+const settingsForm = document.getElementById("settings-form");
+const difficultySelect = document.getElementById("difficulty");
 
 // List of words for game
 const words = [
-  'sigh',
-  'tense',
-  'airplane',
-  'ball',
-  'pies',
-  'juice',
-  'warlike',
-  'bad',
-  'north',
-  'dependent',
-  'steer',
-  'silver',
-  'highfalutin',
-  'superficial',
-  'quince',
-  'eight',
-  'feeble',
-  'admit',
-  'drag',
-  'loving',
-  'shilpi',
-  'subhankar',
-  'amitab',
-  'debajyoti',
-  'ashis bc',
-  'swarup mc',
-  'khanki',
-  'chutia'
-
+  "sigh",
+  "tense",
+  "airplane",
+  "ball",
+  "pies",
+  "juice",
+  "warlike",
+  "bad",
+  "north",
+  "dependent",
+  "steer",
+  "silver",
+  "highfalutin",
+  "superficial",
+  "quince",
+  "eight",
+  "feeble",
+  "admit",
+  "drag",
+  "loving",
+  "shilpi",
+  "subhankar",
+  "amitab",
+  "debajyoti",
+  "ashis bc",
+  "swarup mc",
+  "khanki",
+  "chutia",
 ];
 
 // Init word
@@ -52,15 +51,15 @@ let time = 10;
 
 // Set difficulty to value in ls or medium
 let difficulty =
-  localStorage.getItem('difficulty') !== null
-    ? localStorage.getItem('difficulty')
-    : 'medium';
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
 
 // Set difficulty select value
 difficultySelect.value =
-  localStorage.getItem('difficulty') !== null
-    ? localStorage.getItem('difficulty')
-    : 'medium';
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
 
 // Focus on text on start
 text.focus();
@@ -88,7 +87,7 @@ function updateScore() {
 // Update time
 function updateTime() {
   time--;
-  timeEl.innerHTML = time + 's';
+  timeEl.innerHTML = time + "s";
 
   if (time === 0) {
     clearInterval(timeInterval);
@@ -105,7 +104,7 @@ function gameOver() {
     <button onclick="location.reload()">Reload</button>
   `;
 
-  endgameEl.style.display = 'flex';
+  endgameEl.style.display = "flex";
 }
 
 addWordToDOM();
@@ -113,7 +112,7 @@ addWordToDOM();
 // Event listeners
 
 // Typing
-text.addEventListener('input', e => {
+text.addEventListener("input", (e) => {
   const insertedText = e.target.value;
 
   if (insertedText === randomWord) {
@@ -121,11 +120,11 @@ text.addEventListener('input', e => {
     updateScore();
 
     // Clear
-    e.target.value = '';
+    e.target.value = "";
 
-    if (difficulty === 'hard') {
+    if (difficulty === "hard") {
       time += 2;
-    } else if (difficulty === 'medium') {
+    } else if (difficulty === "medium") {
       time += 3;
     } else {
       time += 5;
@@ -136,10 +135,10 @@ text.addEventListener('input', e => {
 });
 
 // Settings btn click
-settingsBtn.addEventListener('click', () => settings.classList.toggle('hide'));
+settingsBtn.addEventListener("click", () => settings.classList.toggle("hide"));
 
 // Settings select
-settingsForm.addEventListener('change', e => {
+settingsForm.addEventListener("change", (e) => {
   difficulty = e.target.value;
-  localStorage.setItem('difficulty', difficulty);
+  localStorage.setItem("difficulty", difficulty);
 });
